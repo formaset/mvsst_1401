@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+<section class="section">
+  {% if self.heading %}
+    <h2 class="section-title">{{ self.heading }}</h2>
+  {% endif %}
+  <div class="card-grid">
+    {% for card in self.cards %}
+      {% include_block card %}
+    {% endfor %}
+  </div>
+</section>

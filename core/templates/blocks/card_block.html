@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+<div class="info-card">
+  {% if self.image %}
+    {% image self.image fill-320x220 %}
+  {% endif %}
+  <h3>{{ self.title }}</h3>
+  {% if self.text %}
+    <p>{{ self.text }}</p>
+  {% endif %}
+</div>

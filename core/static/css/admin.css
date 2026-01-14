@@ -1,0 +1,13 @@
+:root {
+  --w-color-primary: #002f6c;
+  --w-color-primary-200: #9bcbeb;
+  --w-color-primary-50: #e6f0f8;
+}
+
+.w-header {
+  background: #002f6c;
+}
+
+.w-header__title {
+  color: #fff;
+}

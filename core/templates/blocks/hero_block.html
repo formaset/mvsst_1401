@@ -1,0 +1,19 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="hero-block">
+  <div class="hero-content">
+    <h2>{{ self.title }}</h2>
+    {% if self.subtitle %}
+      <p>{{ self.subtitle }}</p>
+    {% endif %}
+    {% if self.cta_text and self.cta_page %}
+      <a class="btn" href="{{ self.cta_page.url }}">{{ self.cta_text }}</a>
+    {% endif %}
+  </div>
+  <div class="hero-media">
+    {% if self.image %}
+      {% image self.image fill-720x480 %}
+    {% else %}
+      <img src="{% static 'images/hero-placeholder.svg' %}" alt="" />
+    {% endif %}
+  </div>
+</div>

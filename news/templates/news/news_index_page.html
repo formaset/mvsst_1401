@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.intro %}
+        <p class="page-intro">{{ page.intro }}</p>
+      {% endif %}
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container">
+      <div class="news-grid">
+        {% for item in news_page_obj %}
+          <article class="news-card">
+            <a href="{{ item.url }}" class="news-card-link">
+              {% if item.cover_image %}
+                {% image item.cover_image fill-420x260 class="news-card-image" %}
+              {% endif %}
+              <div class="news-card-body">
+                <div class="news-date">{{ item.date|date:"d.m.Y" }}</div>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.intro }}</p>
+              </div>
+            </a>
+          </article>
+        {% empty %}
+          <div class="empty-state">Пока нет новостей.</div>
+        {% endfor %}
+      </div>
+      {% if news_page_obj.paginator.num_pages > 1 %}
+        <nav class="pagination">
+          {% if news_page_obj.has_previous %}
+            <a href="?page={{ news_page_obj.previous_page_number }}" class="pagination-link">Назад</a>
+          {% endif %}
+          <span class="pagination-info">Страница {{ news_page_obj.number }} из {{ news_page_obj.paginator.num_pages }}</span>
+          {% if news_page_obj.has_next %}
+            <a href="?page={{ news_page_obj.next_page_number }}" class="pagination-link">Вперёд</a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

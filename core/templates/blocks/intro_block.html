@@ -1,0 +1,7 @@
+<section class="section intro-block">
+  <h2 class="section-title">{{ self.title }}</h2>
+  <p class="intro-text">{{ self.text }}</p>
+  {% if self.cta_text and self.cta_page %}
+    <a class="btn" href="{{ self.cta_page.url }}">{{ self.cta_text }}</a>
+  {% endif %}
+</section>
