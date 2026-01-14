@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.intro %}
+        <p class="page-intro">{{ page.intro }}</p>
+      {% endif %}
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container">
+      <div class="card-grid">
+        {% for award in awards %}
+          <article class="award-card" data-lightbox>
+            {% if award.image %}
+              <button type="button" class="lightbox-trigger" data-lightbox-src="{{ award.image.file.url }}">
+                {% image award.image fill-320x420 class="award-image" %}
+              </button>
+            {% endif %}
+            <div class="award-body">
+              <h3>{{ award.title }}</h3>
+              <p>{{ award.description }}</p>
+            </div>
+          </article>
+        {% empty %}
+          <div class="empty-state">Добавьте награды в разделе «Сниппеты».</div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" type="button">×</button>
+      <img alt="Просмотр награды" />
+    </div>
+  </div>
+{% endblock %}

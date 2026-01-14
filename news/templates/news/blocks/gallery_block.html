@@ -1,0 +1,6 @@
+{% load wagtailimages_tags %}
+<div class="news-block gallery-block">
+  {% for image in self.images %}
+    {% image image fill-420x280 %}
+  {% endfor %}
+</div>

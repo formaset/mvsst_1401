@@ -1,0 +1,26 @@
+{% load static wagtailuserbar %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %} | АНО «МосводостокСтройТрест»</title>
+  {% if page.search_description %}
+    <meta name="description" content="{{ page.search_description }}" />
+  {% endif %}
+  {% block extra_meta %}{% endblock %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  {% wagtailuserbar %}
+  {% include "includes/header.html" %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  {% include "includes/footer.html" %}
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

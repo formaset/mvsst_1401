@@ -1,0 +1,7 @@
+{% load wagtailimages_tags %}
+<figure class="news-block image-block">
+  {% image self.image fill-960x540 %}
+  {% if self.caption %}
+    <figcaption>{{ self.caption }}</figcaption>
+  {% endif %}
+</figure>

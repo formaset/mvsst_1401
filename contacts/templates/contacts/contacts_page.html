@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">{{ page.title }}</h1>
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container contacts-grid">
+      <div class="contacts-details">
+        <div class="info-card">
+          <h2>Контакты</h2>
+          <p><strong>Телефон:</strong> <a href="tel:{{ page.phone|cut:' ' }}">{{ page.phone }}</a></p>
+          <p><strong>Email:</strong> <a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+          <p><strong>Юридический адрес:</strong> <a href="https://yandex.ru/maps/?text={{ page.legal_address|urlencode }}" target="_blank" rel="noopener">{{ page.legal_address }}</a></p>
+          <p><strong>Фактический адрес:</strong> <a href="https://yandex.ru/maps/?text={{ page.actual_address|urlencode }}" target="_blank" rel="noopener">{{ page.actual_address }}</a></p>
+          <p><strong>График работы:</strong> {{ page.working_hours }}</p>
+        </div>
+        <div class="info-card">
+          <h2>Юридическая информация</h2>
+          <p><strong>Полное наименование:</strong> {{ page.full_name }}</p>
+          <p><strong>Сокращённое наименование:</strong> {{ page.short_name }}</p>
+        </div>
+      </div>
+      <div class="contacts-map">
+        {% if page.map_iframe %}
+          {{ page.map_iframe|safe }}
+        {% else %}
+          <div class="map-placeholder">Добавьте карту Яндекс в админке.</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

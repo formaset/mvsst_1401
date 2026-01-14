@@ -1,0 +1,8 @@
+<figure class="news-block video-block">
+  <video controls preload="metadata">
+    <source src="{{ self.video.url }}">
+  </video>
+  {% if self.caption %}
+    <figcaption>{{ self.caption }}</figcaption>
+  {% endif %}
+</figure>

@@ -1,0 +1,23 @@
+{% load static %}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <img src="{% static 'images/logo.svg' %}" alt="Логотип" class="brand-logo">
+      <span class="brand-text">АНО «МосводостокСтройТрест»</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav id="site-nav" class="site-nav">
+      <div class="nav-item dropdown">
+        <a class="nav-link" href="{{ nav_pages.organization.url|default:'#' }}">Организация</a>
+        <div class="dropdown-menu">
+          <a href="{{ nav_pages.organization.url|default:'#' }}">Об организации</a>
+          <a href="{{ nav_pages.leadership.url|default:'#' }}">Руководство</a>
+          <a href="{{ nav_pages.assessment.url|default:'#' }}">Оценка деятельности организации</a>
+        </div>
+      </div>
+      <a class="nav-link" href="{{ nav_pages.news.url|default:'#' }}">Новости</a>
+      <a class="nav-link" href="https://hh.ru/employer/11611956" target="_blank" rel="noopener">Вакансии</a>
+      <a class="nav-link" href="{{ nav_pages.contacts.url|default:'#' }}">Контакты</a>
+    </nav>
+  </div>
+</header>

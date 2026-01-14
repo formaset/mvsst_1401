@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+  <section class="page-section">
+    <div class="container">
+      {% for block in page.content %}
+        {% include_block block %}
+      {% empty %}
+        <div class="empty-state">Добавьте контент в админке.</div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

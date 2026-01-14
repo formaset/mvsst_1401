@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.intro %}
+        <p class="page-intro">{{ page.intro }}</p>
+      {% endif %}
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container">
+      <div class="card-grid">
+        {% for leader in leaders %}
+          <article class="person-card">
+            {% if leader.photo %}
+              {% image leader.photo fill-320x320 class="person-photo" %}
+            {% endif %}
+            <div class="person-body">
+              <h3>{{ leader.name }}</h3>
+              <p>{{ leader.title }}</p>
+            </div>
+          </article>
+        {% empty %}
+          <div class="empty-state">Добавьте руководителей в разделе «Сниппеты».</div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

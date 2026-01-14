@@ -1,0 +1,10 @@
+<section class="section">
+  {% if self.heading %}
+    <h2 class="section-title">{{ self.heading }}</h2>
+  {% endif %}
+  <ul class="directions-list">
+    {% for item in self.items %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+</section>
